@@ -1,4 +1,4 @@
-#Import necessary libraries
+#Import necessary librarie
 import os
 import cv2
 import numpy as np
