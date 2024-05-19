@@ -1,4 +1,4 @@
-#Import necessary librarie
+# Import necessary libraries 
 import os
 import cv2
 import numpy as np
@@ -23,11 +23,31 @@ def preprocess_image(image_path):
     if image is None:
         print(f"Failed to load image at path: {image_path}")
         return None
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    
+    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Gray scale transformation
+    # Low level features
     resized = cv2.resize(gray, (128, 128))  # Resize to a fixed size
     equalized = cv2.equalizeHist(resized)  # Histogram equalization
     blurred = cv2.GaussianBlur(equalized, (5, 5), 0)  # Gaussian smoothing
     return blurred
+
+    # Histogram features
+    # hist = cv2.calcHist([resized], [0], None, [256], [0, 256]).flatten()
+    # hist_eq = cv2.calcHist([equalized], [0], None, [256], [0, 256]).flatten()
+    
+    # Mid level features
+    # edges = cv2.Canny(equalized, 100, 200) # edge detection
+
+    # SIFT features
+    #sift = cv2.SIFT_create()
+    #keypoints, descriptors = sift.detectAndCompute(equalized, None)
+    #if descriptors is None:
+    #   descriptors = np.zeros((1, sift.descriptorSize()), dtype=np.float32)
+    #sift_features = descriptors.flatten()
+
+    # Combine features
+    #features = np.concatenate((hist, hist_eq, blurred.flatten(), edges.flatten(), sift_features))
+    #return features
 
 # Load and preprocess images
 for category in categories:
