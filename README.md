@@ -1,4 +1,4 @@
-#  IMAGE CLASSIFICATION USING FLASK
+#  IMAGE CLASSIFICATION WITH FLASK
 ### 1. Image Preprocessing Steps
 
 Image preprocessing is a crucial step in preparing images for feature extraction and classification. Here are the steps involved:
